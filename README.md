@@ -208,7 +208,7 @@ cd devparadise-web
 Siga o [Quick Start da API](https://github.com/matheusnascimentods/devparadise-api#-quick-start). A API só aceita requisições da origem definida em `FRONT_URL`, cujo padrão é `http://localhost:5173` (a porta do Vite).
 
 ### 3. Configurar o ambiente
-Crie um arquivo `.env.local` na raiz do projeto:
+Crie um arquivo `.env` na raiz do projeto (ignorado pelo git):
 ```env
 VITE_API_URL=http://localhost:3000
 ```
@@ -303,8 +303,7 @@ Por ser prefixada com `VITE_`, a variável é embutida no bundle final; não col
 
 - **Token em `localStorage`**: o JWT fica no `localStorage` e é enviado como `Authorization: Bearer <token>`; por isso fica acessível a qualquer script da página (risco em caso de XSS).
 - **Sem refresh token**: quando o JWT expira, é preciso entrar de novo.
-- **Proteção de rotas no cliente**: cada página redireciona para `/login` quando não há token; a autorização efetiva é feita pela API. O componente `ProtectedRoute` existe, mas não é usado nas rotas.
-- **`.env` fora do `.gitignore`**: o `.gitignore` ignora apenas `*.local`; use `.env.local` para não versionar configuração local.
+- **Proteção de rotas no cliente**: cada página redireciona para `/login` quando não há token; a autorização efetiva é feita pela API.
 - **Sem testes automatizados**: o projeto não possui suíte de testes nem pipeline de CI; a verificação disponível é o `npm run lint`.
 - **Dependência sem uso**: `dotenv` está no `package.json`, mas o Vite já carrega os arquivos `.env` e o pacote não é importado no código.
 
